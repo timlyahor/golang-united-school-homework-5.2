@@ -47,14 +47,14 @@ func (cache *Cache) Put(key, value string) {
 
 func (cache *Cache) Keys() []string {
 	res := make([]string, 0)
-	for _, v := range cache.holder {
+	for k, v := range cache.holder {
 		if v.isTill == false {
-			res = append(res, v.value)
+			res = append(res, k)
 		} else {
 			now := time.Now()
 
 			if now.Before(v.deadline) {
-				res = append(res, v.value)
+				res = append(res, k)
 			}
 		}
 	}
