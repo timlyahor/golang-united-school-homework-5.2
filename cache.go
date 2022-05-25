@@ -46,7 +46,7 @@ func (cache *Cache) Put(key, value string) {
 }
 
 func (cache *Cache) Keys() []string {
-	res := make([]string, 20)
+	res := make([]string, 0)
 	for _, v := range cache.holder {
 		if v.isTill == false {
 			res = append(res, v.value)
